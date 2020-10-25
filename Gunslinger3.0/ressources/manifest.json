@@ -1,7 +1,7 @@
 {
   "manifest": [
-    {"id": "intro", "src": "ressources/video/intro.webm", "type":  "video"},
-    {"id": "salut", "src": "ressources/video/big-buck-bunny_trailer.webm", "type":  "video"}
+    {"id": "intro", "src": "ressources/video/intro.webm", "type":  "video"}
+
 
   ]
 }
