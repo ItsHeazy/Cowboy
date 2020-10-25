@@ -104,7 +104,34 @@ export class Jeu{
         this.stage.addChild(idleVideo);
         idle.play();
         idle.addEventListener("ended",this.idle.bind(this))
-    }
+
+        document.querySelector('#hotspot1').style.display = "block"
+        document.querySelector('#hotspot2').style.display = "block"
+        document.querySelector('#hotspot3').style.display = "block"
+        document.querySelector('#cible').style.display = "block"
+
+        document.querySelector('#hotspot3').addEventListener("click", () => {
+            let bouteilleD = this.chargeur.getResult("bouteilleD");
+            //idle.loop = true; // optionnel: pour jouer en boucle
+            bouteilleD.muted = true;
+            let bouteilleDVideo = new createjs.Bitmap(bouteilleD);
+            this.stage.addChild(bouteilleDVideo);
+            bouteilleD.play();
+            document.querySelector('#hotspot1').style.display = "none"
+            document.querySelector('#hotspot2').style.display = "none"
+            document.querySelector('#hotspot3').style.display = "none"
+            document.querySelector('#cible').style.display = "none"
+            bouteilleD.addEventListener("ended",this.idle.bind(this))
+
+        })
+
+}
+
+
+
+
+
+
 
 
 

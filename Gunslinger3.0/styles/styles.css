@@ -17,6 +17,7 @@ html, body {
   border-radius: 5px;*/
   top: 60%;
   left: 50%;
+  display: none;
 }
 
 pre {
@@ -44,3 +45,44 @@ pre {
   left: 30%;
 }
 
+#hotspot1 {
+  background: rgba(100,200,90,1);
+  box-shadow: 0px 3px 3px rgba(0,0,0,0.25);
+  cursor: pointer;
+  height: 120px;
+  left: 630px;
+  opacity: 0.75;
+  position: absolute;
+  top: 640px;
+  width: 40px;
+  z-index: 2;
+  display: none;
+}
+
+#hotspot2 {
+  background: rgba(80,60,50,1);
+  box-shadow: 0px 3px 3px rgba(0,0,0,0.25);
+  cursor: pointer;
+  height: 120px;
+  left: 700px;
+  opacity: 0.75;
+  position: absolute;
+  top: 380px;
+  width: 40px;
+  z-index: 2;
+  display: none;
+}
+
+#hotspot3 {
+  background: rgba(45,69,90,1);
+  box-shadow: 0px 3px 3px rgba(0,0,0,0.25);
+  cursor: pointer;
+  height: 120px;
+  left: 925px;
+  opacity: 0.75;
+  position: absolute;
+  top: 290px;
+  width: 40px;
+  z-index: 2;
+  display: none;
+}

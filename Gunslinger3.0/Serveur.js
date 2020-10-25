@@ -37,6 +37,7 @@ export class Serveur {
 
     tirer() {
         console.log('tirer');
+        
 
 
 
