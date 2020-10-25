@@ -4,7 +4,7 @@ export class Interface {
 
         // Redirection vers la version sécurisée (ceci est exigée par l'API de mouvement et
         // d'orientation)
-        this.socket = io("http://10.0.0.247:3000");
+        this.socket = io("http://192.168.0.199:3000");
 
 
         document.querySelector(".zone").addEventListener("touchmove", this.gererMouvement.bind(this));

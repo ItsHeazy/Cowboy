@@ -1,6 +1,8 @@
 {
   "manifest": [
-    {"id": "intro", "src": "ressources/video/intro.webm", "type":  "video"}
+    {"id": "intro", "src": "ressources/video/intro.webm", "type":  "video"},
+    {"id": "start", "src": "ressources/video/trainingstart.webm", "type":  "video"},
+    {"id": "idle", "src": "ressources/video/idle.webm", "type":  "video"}
 
 
   ]

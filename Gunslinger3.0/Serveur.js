@@ -15,7 +15,7 @@ export class Serveur {
 
     demarrer(){
 
-        this.serveur.listen(3000, "10.0.0.247", () => {
+        this.serveur.listen(3000, "192.168.0.199", () => {
             console.log("Le serveur")
         });
 
@@ -37,6 +37,9 @@ export class Serveur {
 
     tirer() {
         console.log('tirer');
+
+
+
 
 
     }

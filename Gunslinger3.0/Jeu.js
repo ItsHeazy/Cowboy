@@ -57,12 +57,16 @@ export class Jeu{
 
         // Exemple 01 - La vidéo est chargée via le fichier manifest.json et est affichée en utilisant
         // un objet createjs.Bitmap. Il faut utiliser Stage au lieu de StageGL dans votre projet.
-        let baliseVideo = this.chargeur.getResult("intro");
+        let intro = this.chargeur.getResult("intro");
         //baliseVideo.loop = true; // optionnel: pour jouer en boucle
-        baliseVideo.muted = true;
-        let bitmapVideo = new createjs.Bitmap(baliseVideo);
-        this.stage.addChild(bitmapVideo);
-        baliseVideo.play();
+        intro.muted = true;
+        let introVideo = new createjs.Bitmap(intro);
+        this.stage.addChild(introVideo);
+        intro.play();
+        intro.addEventListener("ended",this.debutTraining.bind(this))
+
+
+
 
         // Pour arrêter la vidéo, il faut utiliser la méthode pause() et ramener la tête de lecture à 0.
         // Malheureusement, il n'existe pas de méthode stop().
@@ -81,6 +85,29 @@ export class Jeu{
         // this.stage.addChild(video);
 
     }
+
+    debutTraining(){
+        let debut = this.chargeur.getResult("start");
+        //baliseVideo.loop = true; // optionnel: pour jouer en boucle
+        debut.muted = true;
+        let debutVideo = new createjs.Bitmap(debut);
+        this.stage.addChild(debutVideo);
+        debut.play();
+        debut.addEventListener("ended",this.idle.bind(this))
+    }
+
+    idle(){
+        let idle = this.chargeur.getResult("idle");
+        idle.loop = true; // optionnel: pour jouer en boucle
+        idle.muted = true;
+        let idleVideo = new createjs.Bitmap(idle);
+        this.stage.addChild(idleVideo);
+        idle.play();
+        idle.addEventListener("ended",this.idle.bind(this))
+    }
+
+
+
 
 }
 
