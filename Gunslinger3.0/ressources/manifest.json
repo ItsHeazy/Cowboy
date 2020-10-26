@@ -8,7 +8,7 @@
     {"id": "bouteilleC", "src": "ressources/video/bouteilleCentre.webm", "type":  "video"},
     {"id": "bouteilleR", "src": "ressources/video/bouteilleRatee.webm", "type":  "video"},
     {"id": "target", "src": "ressources/images/target.png" },
-    {"id": "hotspot", "src": "ressources/images/Rectangle 10.png" },
+    {"id": "hotspot", "src": "ressources/images/Rectangle 10.png"},
     {"id": "hotspotR", "src": "ressources/images/ratee.png" },
     {"id": "titre", "src": "ressources/images/titre.png" },
 
@@ -19,7 +19,18 @@
     {"id": "xox", "src": "ressources/video/xox.webm", "type":  "video"},
     {"id": "xxo", "src": "ressources/video/xxo.webm", "type":  "video"},
     {"id": "xoo", "src": "ressources/video/xoo.webm", "type":  "video"},
-    {"id": "oxo", "src": "ressources/video/oxo.webm", "type":  "video"}
+    {"id": "oxo", "src": "ressources/video/oxo.webm", "type":  "video"},
+
+
+    {"id": "esquiveG", "src": "ressources/video/esquiveGauche.webm", "type":  "video"},
+    {"id": "esquiveD", "src": "ressources/video/esquiveDroite.webm", "type":  "video"},
+    {"id": "esquiveI", "src": "ressources/video/esquiveIntro.webm", "type":  "video"},
+    {"id": "esquiveR", "src": "ressources/video/esquiveRate.webm", "type":  "video"},
+
+
+    {"id": "gunshot", "src": "ressources/sons/gunshot.wav", "type":  "sound"},
+    {"id": "impact", "src": "ressources/sons/impact.wav", "type":  "sound"},
+    {"id": "ambiance", "src": "ressources/sons/ambiance.wav", "type":  "sound"}
 
 
   ]

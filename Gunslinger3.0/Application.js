@@ -9,6 +9,8 @@ export class Application {
     constructor() {
 
         this.salut = 0;
+        this.salut2 = 0;
+
 
         nw.Window.get().showDevTools();
 
@@ -33,6 +35,7 @@ export class Application {
         // Renvoi d'une promesse qui s'exécutera à la fin du chargement
         return new Promise((resolve, reject) => {
             this.chargeur = new createjs.LoadQueue();
+            this.chargeur.installPlugin(createjs.Sound);
             this.chargeur.addEventListener('complete', resolve);
             this.chargeur.addEventListener('error', reject);
             this.chargeur.loadManifest(manifeste);
@@ -49,8 +52,7 @@ export class Application {
     }
 
     demarrer() {
-
-
+        this.musique = createjs.Sound.play('ambiance', {loop: -1, volume:0.1});
         this.serveur.listen(3000, "192.168.0.199", () => {
             console.log("Le serveur");
         });
@@ -60,6 +62,8 @@ export class Application {
 
             socket.on("position", this.deplacer.bind(this));
             socket.on("tirer", this.tirer.bind(this));
+            socket.on("esquiveDroite", this.esquiveDroite.bind(this));
+            socket.on("esquiveGauche", this.esquiveGauche.bind(this));
         });
 
 
@@ -199,9 +203,8 @@ export class Application {
 
     tirer() {
         console.log('tirer');
-
-
-
+        console.log(this.salut);
+        createjs.Sound.play("gunshot",{volume:0.1});
         if (ndgmr.checkRectCollision(this.cible, this.hotspot3)) {
             console.log('cursd4erd');
 
@@ -211,34 +214,35 @@ export class Application {
             this.stage.addChild(this.bouteilleDVideo);
             this.bouteilleD.play();
 
-            if(this.salut === 0){
+            if (this.salut === 0) {
                 this.salut++;
                 this.bouteilleD.addEventListener("ended", this.oox.bind(this))
             }
 
 
-        }  if (ndgmr.checkRectCollision(this.cible, this.hotspot1)) {
+        }
+        if (ndgmr.checkRectCollision(this.cible, this.hotspot1)) {
             this.bouteilleG = this.chargeur.getResult("bouteilleG");
             this.bouteilleG.muted = true;
             this.bouteilleGVideo = new createjs.Bitmap(this.bouteilleG);
             this.stage.addChild(this.bouteilleGVideo);
             this.bouteilleG.play();
 
-            if(this.salut === 0){
+            if (this.salut === 0) {
                 this.salut++;
                 this.bouteilleG.addEventListener("ended", this.xoo.bind(this))
             }
 
 
-
-        }  if (ndgmr.checkRectCollision(this.cible, this.hotspot2)) {
+        }
+        if (ndgmr.checkRectCollision(this.cible, this.hotspot2)) {
             this.bouteilleC = this.chargeur.getResult("bouteilleC");
             this.bouteilleC.muted = true;
             this.bouteilleCVideo = new createjs.Bitmap(this.bouteilleC);
             this.stage.addChild(this.bouteilleCVideo);
             this.bouteilleC.play();
 
-            if(this.salut === 0){
+            if (this.salut === 0) {
                 this.salut++;
                 this.bouteilleC.addEventListener("ended", this.oxo.bind(this))
             }
@@ -257,7 +261,8 @@ export class Application {
     }
 
     xoo() {
-
+        createjs.Sound.play("impact",{volume:0.1});
+        this.salut++;
         this.bouteilleC = this.chargeur.getResult("bouteilleC");
         this.bouteilleD = this.chargeur.getResult("bouteilleD");
 
@@ -291,9 +296,8 @@ export class Application {
 
 
     oox() {
-
-
-
+        createjs.Sound.play("impact",{volume:0.1});
+        this.salut++;
         this.bouteilleC = this.chargeur.getResult("bouteilleC");
         this.bouteilleG = this.chargeur.getResult("bouteilleG");
 
@@ -327,6 +331,8 @@ export class Application {
 
 
     oxx() {
+        createjs.Sound.play("impact",{volume:0.1});
+        this.salut++;
         this.bouteilleG = this.chargeur.getResult("bouteilleG");
 
         let oxx = this.chargeur.getResult("oxx");
@@ -353,7 +359,8 @@ export class Application {
     }
 
     oxo() {
-
+        createjs.Sound.play("impact",{volume:0.1});
+        this.salut++;
         this.bouteilleG = this.chargeur.getResult("bouteilleG");
         this.bouteilleD = this.chargeur.getResult("bouteilleD");
 
@@ -384,7 +391,8 @@ export class Application {
 
 
     xxo() {
-
+        createjs.Sound.play("impact",{volume:0.1});
+        this.salut++;
         this.bouteilleD = this.chargeur.getResult("bouteilleD");
 
         let xxo = this.chargeur.getResult("xxo");
@@ -411,7 +419,8 @@ export class Application {
     }
 
     xox() {
-
+        createjs.Sound.play("impact",{volume:0.1});
+        this.salut++;
         this.bouteilleC = this.chargeur.getResult("bouteilleC");
 
         let xox = this.chargeur.getResult("xox");
@@ -440,11 +449,91 @@ export class Application {
     }
 
     xxx() {
-        let xxx = this.chargeur.getResult("xxx");
-        xxx.muted = true;
-        let xxxVideo = new createjs.Bitmap(xxx);
-        this.stage.addChild(xxxVideo);
-        xxx.play();
+        createjs.Sound.play("impact",{volume:0.1});
+        this.xxx = this.chargeur.getResult("xxx");
+        this.xxx.muted = true;
+        this.xxxVideo = new createjs.Bitmap(this.xxx);
+        this.stage.addChild(this.xxxVideo);
+        this.xxx.play();
+        this.xxx.addEventListener("ended", this.esquive.bind(this));
+
     }
+
+    esquivepause(){
+            console.log('GOGOGO')
+            this.esquiveR();
+
+    }
+
+
+    esquive() {
+        this.salut2++;
+        let esquiveI = this.chargeur.getResult("esquiveI");
+        esquiveI.muted = true;
+        let esquiveIVideo = new createjs.Bitmap(esquiveI);
+        this.stage.addChild(esquiveIVideo);
+        esquiveI.play();
+// Mettre un texte
+        this.tbk = setTimeout(() =>{ this.esquivepause() },15000);
+
+
+    }
+
+    esquiveR() {
+
+        let esquiveR = this.chargeur.getResult("esquiveR");
+        esquiveR.muted = true;
+        let esquiveRVideo = new createjs.Bitmap(esquiveR);
+        this.stage.addChild(esquiveRVideo);
+        esquiveR.play();
+    }
+
+
+    esquiveGauche() {
+        console.log('EsquiveGauche')
+        if (this.salut2 === 1){
+            this.salut2++;
+            let esquiveGauche = this.chargeur.getResult("esquiveG");
+            esquiveGauche.muted = true;
+            let esquiveGaucheVideo = new createjs.Bitmap(esquiveGauche);
+            this.stage.addChild(esquiveGaucheVideo);
+            esquiveGauche.play();
+            clearTimeout(this.tbk);
+            esquiveGauche.addEventListener("ended", this.bye.bind(this));
+        }
+    }
+
+
+    esquiveDroite() {
+        console.log('EsquiveDroite')
+             if (this.salut2 === 1) {
+                 this.salut2++;
+             let esquiveDroite = this.chargeur.getResult("esquiveD");
+            esquiveDroite.muted = true;
+            let esquiveDroiteVideo = new createjs.Bitmap(esquiveDroite);
+            this.stage.addChild(esquiveDroiteVideo);
+            esquiveDroite.play();
+                 clearTimeout(this.tbk);
+                 esquiveDroite.addEventListener("ended", this.bye.bind(this));
+        }
+    }
+
+
+    bye(){
+        let intro = this.chargeur.getResult("intro");
+        //baliseVideo.loop = true; // optionnel: pour jouer en boucle
+        intro.muted = true;
+        let introVideo = new createjs.Bitmap(intro);
+        this.stage.addChild(introVideo);
+        //intro.play();
+    }
+
 }
+
+
+
+
+
+
+
 

@@ -9,20 +9,40 @@ export class Interface {
 
         document.querySelector(".zone").addEventListener("touchmove", this.gererMouvement.bind(this));
 
+        document.querySelector(".btn-p2-p1").addEventListener("touchstart", this.esquiveGauche.bind(this));
 
 
-        // When "tirer" button is clicked
+        document.querySelector(".btn-p2-p2").addEventListener("touchstart", this.esquiveDroite.bind(this));
+
+        //When "tirer" button is clicked
         document.querySelector(".btn-p2-p3").addEventListener("touchstart", this.tirer.bind(this));
+
+
+
+
 
     }
 
+    esquiveGauche(e) {
+        console.log('mere')
+        this.socket.emit('esquiveGauche');
+
+    }
 
     tirer(e) {
         console.log('tirer31312')
         this.socket.emit('tirer');
 
+    }
+
+
+    esquiveDroite(e) {
+        console.log('ta')
+        this.socket.emit('esquiveDroite');
 
     }
+
+
 
 
     gererMouvement(e) {
