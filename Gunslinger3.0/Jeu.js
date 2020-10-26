@@ -2,8 +2,8 @@ export class Jeu{
 
     constructor() {
         this.canvas = document.querySelector("canvas");
-        //this.canvas.width = window.innerWidth;
-        //this.canvas.height = window.innerHeight;
+       // this.canvas.width = window.innerWidth;
+       // this.canvas.height = window.innerHeight;
 
         this
             .precharger("ressources/manifest.json")
@@ -31,6 +31,10 @@ export class Jeu{
     }
 
     demarrer() {
+        this.cible = new createjs.Bitmap(this.chargeur.getResult("target"));
+        this.stage.addChild(this.cible);
+        this.cible.scale = 1;
+        console.log(this.cible);
 
         // Quelques notes concernant la vidéo dans Chrome/Chromium vs NW.js
         //
@@ -84,6 +88,7 @@ export class Jeu{
         // let video = new createjs.Bitmap(buffer);
         // this.stage.addChild(video);
 
+
     }
 
     debutTraining(){
@@ -103,38 +108,33 @@ export class Jeu{
         let idleVideo = new createjs.Bitmap(idle);
         this.stage.addChild(idleVideo);
         idle.play();
-        idle.addEventListener("ended",this.idle.bind(this))
+        idle.addEventListener("ended",this.idle.bind(this));
 
-        document.querySelector('#hotspot1').style.display = "block"
-        document.querySelector('#hotspot2').style.display = "block"
-        document.querySelector('#hotspot3').style.display = "block"
-        document.querySelector('#cible').style.display = "block"
+        this.cible = new createjs.Bitmap(this.chargeur.getResult('target'));
+        this.stage.addChild(this.cible);
 
-        document.querySelector('#hotspot3').addEventListener("click", () => {
-            let bouteilleD = this.chargeur.getResult("bouteilleD");
-            //idle.loop = true; // optionnel: pour jouer en boucle
-            bouteilleD.muted = true;
-            let bouteilleDVideo = new createjs.Bitmap(bouteilleD);
-            this.stage.addChild(bouteilleDVideo);
-            bouteilleD.play();
-            document.querySelector('#hotspot1').style.display = "none"
-            document.querySelector('#hotspot2').style.display = "none"
-            document.querySelector('#hotspot3').style.display = "none"
-            document.querySelector('#cible').style.display = "none"
-            bouteilleD.addEventListener("ended",this.idle.bind(this))
 
-        })
+        //document.querySelector('#hotspot1').style.display = "block"
+        //document.querySelector('#hotspot2').style.display = "block"
+        //document.querySelector('#hotspot3').style.display = "block"
+        //document.querySelector('#cible').style.display = "block"
+
+        //document.querySelector('#hotspot3').addEventListener("click", () => {
+        //    let bouteilleD = this.chargeur.getResult("bouteilleD");
+        //    //idle.loop = true; // optionnel: pour jouer en boucle
+        //    bouteilleD.muted = true;
+        //    let bouteilleDVideo = new createjs.Bitmap(bouteilleD);
+        //    this.stage.addChild(bouteilleDVideo);
+        //    bouteilleD.play();
+        //    document.querySelector('#hotspot1').style.display = "none"
+        //    document.querySelector('#hotspot2').style.display = "none"
+        //    document.querySelector('#hotspot3').style.display = "none"
+        //    document.querySelector('#cible').style.display = "none"
+        //    bouteilleD.addEventListener("ended",this.idle.bind(this))
+//
+        //})
 
 }
-
-
-
-
-
-
-
-
-
 
 }
 

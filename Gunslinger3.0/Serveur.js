@@ -1,6 +1,8 @@
 
-const express = require("express")
-const http = require("http")
+const express = require("express");
+const http = require("http");
+
+
 
 export class Serveur {
 
@@ -33,11 +35,23 @@ export class Serveur {
         let cible = document.getElementById("cible");
         cible.style.left = (message.ratioX * window.innerWidth) + "px";
         cible.style.top = (message.ratioY * window.innerHeight) + "px";
+
+        let hotspot3 = document.getElementById("hotspot3")
+        if(ndgmr.checkRectCollision(cible, hotspot3)){
+
+            console.log('cursd4erd')
+    }
     }
 
     tirer() {
         console.log('tirer');
-        
+        let cible = document.getElementById("cible");
+    let hotspot3 = document.getElementById("hotspot3")
+        if(ndgmr.checkRectCollision(cible, hotspot3)){
+
+            console.log('cursd4erd')
+        }
+
 
 
 

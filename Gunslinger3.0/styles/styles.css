@@ -18,6 +18,7 @@ html, body {
   top: 60%;
   left: 50%;
   display: none;
+  z-index: 3;
 }
 
 pre {
