@@ -144,6 +144,7 @@ export class Application {
         idle.play();
         idle.addEventListener("ended", this.idle.bind(this));
 
+
         this.cible = new createjs.Bitmap(this.chargeur.getResult("target"));
         this.stage.addChild(this.cible);
         this.cible.x = 1000;
