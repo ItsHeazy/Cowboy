@@ -3,24 +3,27 @@
 <html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#ffbe00">
+    <meta name="msapplication-TileColor" content="#ffbe00">
+    <meta name="theme-color" content="#ffbe00">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="styles/styles.css">
+    <title>Interface tactile</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <!-- Version client de la bibliothèque Socket.IO -->
+    <script src="bibliotheques/socket.io.js" defer></script>
+    <script type="module">
+        import {Interface} from "./scripts/Interface.js";
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
-
-
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles/normalize.css">
-  <link rel="stylesheet" href="styles/styles.css">
-  <title>Interface tactile</title>
-  <link rel="stylesheet" href="styles/styles.css">
-
-  <!-- Version client de la bibliothèque Socket.IO -->
-  <script src="bibliotheques/socket.io.js" defer></script>
-
-  <script type="module">
-    import {Interface} from "./scripts/Interface.js";
-    new Interface();
-  </script>
+        new Interface();
+    </script>
 
 </head>
 
@@ -28,53 +31,55 @@
 
 
 <section class="layout-game start-page wrap">
-  <input id="codeJeu" type="text">
-  <input id="codeJeuR" type="submit">
-  <img src="images/logo.png" alt="Logo Gunslinger">
-  <div class="start-page-col1">
-    <h1>Comment jouer?</h1>
-    <p>Une fois la partie démarrée, regardez l’écran devant vous et utilisez les boutons pour
-      interagir avec
-      votre personnage.</p>
-    <div class="btn-primary btn-p1 start-page-btn">Jouer</div>
-  </div>
-</section>
+    <img src="images/logo.png" alt="Logo Gunslinger">
 
+    <div class="start-page-col1">
+        <h1>Comment jouer?</h1>
+        <p>Pour commencer la partie, recopiez le numéro de la partie qui est affiché sur l'écran du jeu. Une fois la partie démarrée, regardez l’écran devant vous et utilisez les boutons pour
+            interagir.</p>
+    </div>
+        <div class="inputNumber-group">
+            <label for="codeJeu">Numéro de la partie</label>
+            <input id="codeJeu" type="number" required="required">
+            <input id="codeJeuR" type="submit">
+        </div>
+        <div class="btn-primary btn-p1 start-page-btn">Jouer</div>
+
+</section>
 
 
 <!--Game page-->
 
 <section class="layout-game game-page u-hidden">
-  <div class="bruh">
-    <div class="wrap">
-      <img src="images/logo.png" alt="Logo Gunslinger" class="logo">
+    <div class="bruh">
+        <div class="wrap">
+            <img src="images/logo.png" alt="Logo Gunslinger" class="logo">
+        </div>
+        <div class="zone"></div>
     </div>
-    <div class="zone"></div>
-  </div>
 
 
-  <div class="btn-p2-group-all">
-    <div class="btn-p2-group">
-      <div class="btn-p2-p1">Esquiver à gauche</div>
-      <div class="btn-p2-p2">Esquiver à droite</div>
+    <div class="btn-p2-group-all">
+        <div class="btn-p2-group">
+            <div class="btn-p2-p1">Esquiver à gauche</div>
+            <div class="btn-p2-p2">Esquiver à droite</div>
+        </div>
+        <div class="btn-p2-p3">Tirer</div>
     </div>
-    <div class="btn-p2-p3">Tirer</div>
-  </div>
 </section>
-
 
 
 <!--Congratulations-->
 <section class="layout-game congrats-page wrap u-hidden">
-  <img src="images/logo.png" alt="Logo Gunslinger" class="logo">
-  <div>
-    <h1>Félicitations!</h1>
-    <p>Vous avez gagné la partie. Souhaitez-vous recommencer une nouvelle partie?</p>
-    <div class="congrats-btn-group">
-      <div class="btn-primary btn-p3 congrats-page-btn"><h1>Recommencer</h1></div>
-      <!--        <h2 class="quit-game">Non, je veux arrêter.</h2>-->
+    <img src="images/logo.png" alt="Logo Gunslinger" class="logo">
+    <div>
+        <h1>Félicitations!</h1>
+        <p>Vous avez gagné la partie. Souhaitez-vous recommencer une nouvelle partie?</p>
+        <div class="congrats-btn-group">
+            <div class="btn-primary btn-p3 congrats-page-btn"><h1>Recommencer</h1></div>
+            <!--        <h2 class="quit-game">Non, je veux arrêter.</h2>-->
+        </div>
     </div>
-  </div>
 </section>
 
 </body>
