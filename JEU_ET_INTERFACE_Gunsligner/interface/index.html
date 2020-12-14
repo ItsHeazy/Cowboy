@@ -1,7 +1,5 @@
-<!doctype html>
-
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
@@ -14,8 +12,7 @@
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/normalize.css">
-    <link rel="stylesheet" href="styles/styles.css">
-    <title>Interface tactile</title>
+    <title>Gunslinger | Mobile</title>
     <link rel="stylesheet" href="styles/styles.css">
     <!-- Version client de la bibliothèque Socket.IO -->
     <script src="bibliotheques/socket.io.js" defer></script>
@@ -24,29 +21,24 @@
 
         new Interface();
     </script>
-
 </head>
-
 <body>
-
 
 <section class="layout-game start-page wrap">
     <img src="images/logo.png" alt="Logo Gunslinger">
-
     <div class="start-page-col1">
         <h1>Comment jouer?</h1>
-        <p>Pour commencer la partie, recopiez le numéro de la partie qui est affiché sur l'écran du jeu. Une fois la partie démarrée, regardez l’écran devant vous et utilisez les boutons pour
+        <p>Pour commencer la partie, recopiez le numéro de la partie qui est affiché sur l'écran du jeu. Une fois la
+            partie démarrée, regardez l’écran devant vous et utilisez les boutons pour
             interagir.</p>
     </div>
-        <div class="inputNumber-group">
-            <label for="codeJeu">Numéro de la partie</label>
-            <input id="codeJeu" type="number" required="required">
-            <input id="codeJeuR" type="submit">
-        </div>
-        <div class="btn-primary btn-p1 start-page-btn">Jouer</div>
-
+    <div class="inputNumber-group">
+        <label for="codeJeu">Numéro de la partie</label>
+        <input id="codeJeu" type="number" required="required">
+        <input id="codeJeuR" type="submit">
+    </div>
+    <div class="btn-primary btn-p1 start-page-btn">Jouer</div>
 </section>
-
 
 <!--Game page-->
 
@@ -58,7 +50,6 @@
         <div class="zone"></div>
     </div>
 
-
     <div class="btn-p2-group-all">
         <div class="btn-p2-group">
             <div class="btn-p2-p1">Esquiver à gauche</div>
@@ -67,7 +58,6 @@
         <div class="btn-p2-p3">Tirer</div>
     </div>
 </section>
-
 
 <!--Congratulations-->
 <section class="layout-game congrats-page wrap u-hidden">
@@ -81,8 +71,5 @@
         </div>
     </div>
 </section>
-
 </body>
-
-
 </html>

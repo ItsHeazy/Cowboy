@@ -1,11 +1,30 @@
+body {
+    font-family: "DM Sans", sans-serif;
+}
+
+.numero {
+    background-color: #5D6A7F;
+}
+
+.gamecode {
+    font-size: 22px;
+    font-weight: bold;
+    max-width: 700px;
+    text-align: center;
+}
+
+.title-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 html, body {
-    width: 100%;
-    height: 100%;
     margin: 0;
     color: white;
     font-size: 16px;
     overflow: hidden;
-    display: flex;
     background-color: #0e0e0e;
 }
 
@@ -15,33 +34,35 @@ canvas {
 
 .accueil {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     flex-direction: column;
-    width: 100%;
+    width: 100vw;
+    height: 100vh;
 }
 
 
 .title {
-    width: 1000px;
-    height: 400px;
+    max-width: 500px;
 }
 
 .info {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+
+}
+
+.info img {
+    width: 100%;
+    max-width: 800px;
+    height: 100%;
+}
+
+.info div  {
+margin: 15px;
 }
 
 .gif1 {
     border-radius: 25px;
-    margin: 25px;
-}
-
-@media screen and (max-width: 1919px) {
-    .gif1 {
-        width: 750px;
-        height: 575px;
-    }
-
 }
