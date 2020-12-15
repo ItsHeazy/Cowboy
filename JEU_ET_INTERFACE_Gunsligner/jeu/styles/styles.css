@@ -2,6 +2,14 @@ body {
     font-family: "DM Sans", sans-serif;
 }
 
+input {
+    -webkit-appearance: none;
+}
+
+.chiffre {
+    margin: 0;
+}
+
 .numero {
     background-color: #5D6A7F;
 }
@@ -59,8 +67,8 @@ canvas {
     height: 100%;
 }
 
-.info div  {
-margin: 15px;
+.info div {
+    margin: 15px;
 }
 
 .gif1 {

@@ -11,6 +11,10 @@ html, body {
   box-sizing: border-box;
 }
 
+.main-logo {
+  max-width: 70%;
+}
+
 #codeJeu {
   background: #444D5D;
   border: none;
@@ -84,6 +88,11 @@ img {
 .btn-primary .btn-p1 {
   background: linear-gradient(96.63deg, #E600D8 0%, #711C91 100%);
   height: 100px;
+}
+
+.start-page-btn {
+  background-size: 200px 110px !important;
+  z-index: 100;
 }
 
 .btn-p1 {
