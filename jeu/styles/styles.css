@@ -1,0 +1,70 @@
+body {
+    font-family: "DM Sans", sans-serif;
+}
+
+.numero {
+    background-color: #5D6A7F;
+    padding: 10px 25px 10px 25px;
+    border-radius: 10px;
+}
+
+.gamecode {
+    font-size: 22px;
+    font-weight: bold;
+    max-width: 700px;
+    text-align: center;
+}
+
+.title-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+html, body {
+    margin: 0;
+    color: white;
+    font-size: 16px;
+    overflow: hidden;
+    background-color: #0e0e0e;
+}
+
+canvas {
+    display: none;
+}
+
+.accueil {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+}
+
+
+.title {
+    max-width: 500px;
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.info img {
+    width: 100%;
+    max-width: 800px;
+    height: 100%;
+}
+
+.info div  {
+    margin: 15px;
+}
+
+.gif1 {
+    border-radius: 25px;
+}
