@@ -64,120 +64,141 @@ function gererNouvelleInterface(socket) {
 
     //let jeuTrouve = jeux.find(jeu => jeu.handshake.query.codeJeu === socket.handshake.query.codeJeu);
 
-  // let jeuTrouve = jeux.filter((unJeu) =>{
+    // let jeuTrouve = jeux.filter((unJeu) =>{
 
-  //     return socket.handshake.query.codeJeu === unJeu.handshake.query.codeJeu;
-  // });
+    //     return socket.handshake.query.codeJeu === unJeu.handshake.query.codeJeu;
+    // });
 
-  // if(jeuTrouve.length===0){
-  //     console.log('mauvais ID');
-  //     socket.emit("mauvaisID");
-  //     //socket.emit('disconnect');
-  // }
+    // if(jeuTrouve.length===0){
+    //     console.log('mauvais ID');
+    //     socket.emit("mauvaisID");
+    //     //socket.emit('disconnect');
+    // }
 
 
-    let jeuxTrouve = jeux.filter((unJeu) =>{
-
+    let jeuxTrouve = jeux.filter((unJeu) => {
         return socket.handshake.query.codeJeu === unJeu.handshake.query.codeJeu;
     });
 
-    if(jeuxTrouve.length===0){
+    if (jeuxTrouve.length === 0) {
         console.log('mauvais ID');
         socket.emit("mauvaisID");
-        //socket.emit('disconnect');
+        socket.emit('disconnect');
+        return;
     }
 
 
-    if (!interfaces[0]) {
-        interfaces[""] = socket;
+    interfaces.push(socket);
 
-        interfaces[""].on("commencer", () => {
-            console.log("go")
-            jeuxTrouve.forEach((unJeu)=>{
-                unJeu.emit('commencer');
-            });
-            //jeuTrouve.emit("commencer");
-        })
+    // if (!interfaces[0]) {
+    //     interfaces[0] = socket;
 
-        interfaces[""].on("tirer", () => {
-            jeuxTrouve.forEach((unJeu)=>{
-                unJeu.emit('tirer');
-            });
-            //jeuTrouve.emit("commencer");
-        })
+    socket.on("commencer", () => {
+        // console.log("go", interfaces[""])
+        jeuxTrouve.forEach((unJeu) => {
+            unJeu.emit('commencer');
+        });
+        //jeuTrouve.emit("commencer");
+    })
 
-        interfaces[""].on("esquiveGauche", () => {
-            jeuxTrouve.forEach((unJeu)=>{
-                unJeu.emit('esquiveGauche');
-            });
-            //jeuTrouve.emit("commencer");
-        })
+    socket.on("tirer", () => {
+        jeuxTrouve.forEach((unJeu) => {
+            unJeu.emit('tirer');
+        });
+        //jeuTrouve.emit("commencer");
+    })
 
-        interfaces[""].on("esquiveDroite", () => {
-            jeuxTrouve.forEach((unJeu)=>{
-                unJeu.emit('esquiveDroite');
-            });
-            //jeuTrouve.emit("commencer");
-        })
 
-        interfaces[""].on("position", () => {
-            jeuxTrouve.forEach((unJeu)=>{
-                unJeu.emit('position');
-            });
-            //jeuTrouve.emit("commencer");
-        })
+    socket.on("esquive", () => {
+        //console.log('esquive')
+        jeuxTrouve.forEach((unJeu) => {
+            unJeu.emit('esquive');
+        });
+        //jeuTrouve.emit("commencer");
+    })
 
-       interfaces[""].on("mouvement", (e) => {
-           jeuxTrouve.forEach((unJeu)=>{
-               unJeu.emit('mouvement',e);
-           });
-           //jeuTrouve.emit("commencer");
-       })
+    socket.on("recommencerJeu", () => {
+        console.log('recommencerJeu')
+        jeuxTrouve.forEach((unJeu) => {
+            unJeu.emit('recommencerJeu');
+        });
+    })
 
-      //  socket.on("commencer", message => {
-      //      console.log('go')
-      //     jeuTrouve.emit("commencer", message);
-      //  });
 
-    } else if (!interfaces[1]) {
-        interfaces[1] = socket;
-        socket.on("touchmove", message => {
-            // jeux.forEach(jeu => jeu.emit("joueur2", message))
-        })
-        socket.on("click", message => {
-            // jeux.forEach(jeu => jeu.emit("joueur2", message))
-        })
-    } else {
-        interfaces.push(socket);
-    }
+    //  interfaces[""].on("esquive2", () => {
+    //      console.log('esquive')
+    //      jeuxTrouve.forEach((unJeu)=>{
+    //          unJeu.emit('yikes');
+    //      });
+    //      //jeuTrouve.emit("commencer");
+    //  })
+
+    //  interfaces[""].on("esquiveGauche", () => {
+    //      jeuxTrouve.forEach((unJeu)=>{
+    //          unJeu.emit('esquiveGauche');
+    //      });
+    //      //jeuTrouve.emit("commencer");
+    //  })
+//
+    //  interfaces[""].on("esquiveDroite", () => {
+    //      jeuxTrouve.forEach((unJeu)=>{
+    //          unJeu.emit('esquiveDroite');
+    //      });
+    //      //jeuTrouve.emit("commencer");
+    //  })
+
+    socket.on("position", () => {
+        jeuxTrouve.forEach((unJeu) => {
+            console.log("position")
+            unJeu.emit('position');
+        });
+        //jeuTrouve.emit("commencer");
+    })
+
+    socket.on("mouvement", (e) => {
+        jeuxTrouve.forEach((unJeu) => {
+            unJeu.emit('mouvement', e);
+        });
+        //jeuTrouve.emit("commencer");
+    })
+
+    //  socket.on("commencer", message => {
+    //      console.log('go')
+    //     jeuTrouve.emit("commencer", message);
+    //  });
+
+
+    // } else {
+    //     interfaces.push(socket);
+    // }
 
     // Envoyer une mise à jour à toutes les interfaces pour identifer leur position dans la liste
-    interfaces.forEach((interface, index) => {
-        if (!interface) return;
-        interface.emit("position", {position: index})
-    })
+    // interfaces.forEach((interface, index) => {
+    //     if (!interface) return;
+    //     interface.emit("position", {position: index})
+    // })
 
     // Ajout d'un écouteur pour détecter la déconnexion d'une interface
     socket.on('disconnect', () => {
 
         // Identification de l'index de l'interface qui vient de se déconnecter
-        const index = interfaces.indexOf(socket);
+        // const index = interfaces.indexOf(socket);
 
-        console.log("Déconnexion de l'interface: ", index);
+        // console.log("Déconnexion de l'interface: ", index);
 
-        if (index === 0) {
-            interfaces[""] = null;
-        } else if (index === 1) {
-            interfaces[1] = null;
-        } else {
-            interfaces.splice(index, 1);
-        }
-
-        // Envoyer une mise à jour à toutes les interfaces pour identifer leur position dans la liste
-        interfaces.forEach((interface, index) => {
-            if (interface === null) return;
-            interface.emit("position", {position: index})
-        })
+        // if (index === 0) {
+        //     interfaces[""] = null;
+        // } else if (index === 1) {
+        //     interfaces[1] = null;
+        // } else {
+        //     interfaces.splice(index, 1);
+        // }
+        //
+        // // Envoyer une mise à jour à toutes les interfaces pour identifer leur position dans la liste
+        // interfaces.forEach((interface, index) => {
+        //     if (interface === null) return;
+        //     interface.emit("position", {position: index})
+        // })
 
     })
 
@@ -190,8 +211,26 @@ function gererNouveauJeu(socket) {
     jeux.push(socket);
 
     socket.on('disconnect', () => {
-        console.log("Déconnexion d'une page de jeu!");
+        console.log("Déconnexion d'une page de jeu!", socket.handshake.query.codeJeu);
         jeux = jeux.filter(item => item !== socket)
+    });
+
+    socket.on('recommencer', () => {
+        console.log("recommencer");
+        let interface = interfaces.find(i => {
+            return i.handshake.query.codeJeu === socket.handshake.query.codeJeu;
+        })
+        interface.emit("recommencer",socket.handshake.query.codeJeu)
+    });
+
+
+    socket.on('recommencer2', () => {
+        console.log("recommencer2")
+        let interface = interfaces.find(i => {
+            return i.handshake.query.codeJeu === socket.handshake.query.codeJeu;
+        })
+        interface.emit("recommencer2",socket.handshake.query.codeJeu)
+
     });
 
 }
